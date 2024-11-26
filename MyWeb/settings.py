@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG","False").lower()== "True"
+DEBUG = os.environ.get("DEBUG","False").lower()=="True"
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS").split(" ")
 
@@ -44,7 +44,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -83,10 +82,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-
-database_url =os.environ.get("DATABASE_URL")
-DATABASES['default']= dj_database_url.parse(database_url)
+database_url=os.environ.get("DATABASE_URL")
+DATABASES["default"] = dj_database_url.parse("postgresql://my_personal_render_user:ZFpn3boyLTBMiM32f493ZJ3kc0hbCx1b@dpg-ct0a2v8gph6c73a81rt0-a.oregon-postgres.render.com/my_personal_render")
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
